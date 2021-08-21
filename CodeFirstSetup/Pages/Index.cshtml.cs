@@ -32,8 +32,8 @@ namespace CodeFirstSetup.Pages
 
         public void OnGet()
         {
-            car = _dbContext.car.ToList();
-            truck = _dbContext.truck.ToList();
+            //car = _dbContext.car.ToList();
+            //truck = _dbContext.truck.ToList();
         }
     }
 }

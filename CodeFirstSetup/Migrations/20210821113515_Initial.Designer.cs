@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodeFirstSetup.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210820230033_Initial")]
+    [Migration("20210821113515_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,9 +61,8 @@ namespace CodeFirstSetup.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("int");
 
-                    b.Property<string>("Manufacturer")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Manufacture")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RegNumber")
                         .HasMaxLength(6)

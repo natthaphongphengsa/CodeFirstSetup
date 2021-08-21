@@ -59,9 +59,8 @@ namespace CodeFirstSetup.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("int");
 
-                    b.Property<string>("Manufacturer")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("Manufacture")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RegNumber")
                         .HasMaxLength(6)

@@ -18,40 +18,39 @@ namespace CodeFirstSetup.Data
             SeedTruck(dbContext);
         }
         public static void SeedCar(ApplicationDbContext dbContext)
-        {
-
-            if (!dbContext.car.Any(c => c.RegNumber == "ABT 654"))
+        {            
+            if (!dbContext.car.Any(c => c.RegNumber == "ABT654"))
             {
-                dbContext.car.Add(new Car() 
+                dbContext.car.Add(new Car()
                 {
                     Manufacturer = "Toyota",
                     Model = "Fortuner",
                     Year = 2019,
-                    RegNumber = "ABT 654",
+                    RegNumber = "ABT654",
                     HasRadio = true,
                     Price = 346296,
-                });                
+                });
             }
-            if (!dbContext.car.Any(c => c.RegNumber == "ABG 754"))
+            if (!dbContext.car.Any(c => c.RegNumber == "ABG754"))
             {
                 dbContext.car.Add(new Car()
                 {
                     Manufacturer = "Honda",
                     Model = "Civiq",
                     Year = 2020,
-                    RegNumber = "ABG 754",
+                    RegNumber = "ABG754",
                     HasRadio = false,
                     Price = 146296,
                 });
             }
-            if (!dbContext.car.Any(c => c.RegNumber == "CAD 417"))
+            if (!dbContext.car.Any(c => c.RegNumber == "CAD417"))
             {
                 dbContext.car.Add(new Car()
                 {
                     Manufacturer = "Nissan",
                     Model = "GT",
                     Year = 2018,
-                    RegNumber = "CAD 417",
+                    RegNumber = "CAD417",
                     HasRadio = false,
                     Price = 248276,
                 });
@@ -61,9 +60,9 @@ namespace CodeFirstSetup.Data
         {
             if (!dbContext.truck.Any(t => t.RegNumber == "BRD352"))
             {
-                dbContext.truck.Add(new Truck() 
+                dbContext.truck.Add(new Truck()
                 {
-                    Manufacturer = "Scanidivia",
+                    Manufacture = "Scanidivia",
                     LoadVolumeKvm = 60,
                     RegNumber = "BRD352",
                 });
@@ -72,16 +71,16 @@ namespace CodeFirstSetup.Data
             {
                 dbContext.truck.Add(new Truck()
                 {
-                    Manufacturer = "Renualt",
+                    Manufacture = "Renualt",
                     LoadVolumeKvm = 20,
                     RegNumber = "KDS372",
-                });                
+                });
             }
             if (!dbContext.truck.Any(t => t.RegNumber == "SDA254"))
             {
                 dbContext.truck.Add(new Truck()
                 {
-                    Manufacturer = "Volvo",
+                    Manufacture = "Volvo",
                     LoadVolumeKvm = 20,
                     RegNumber = "SDA254",
                 });

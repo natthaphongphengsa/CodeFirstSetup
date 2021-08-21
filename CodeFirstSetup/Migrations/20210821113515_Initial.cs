@@ -30,7 +30,7 @@ namespace CodeFirstSetup.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Manufacturer = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Manufacture = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LoadVolumeKvm = table.Column<int>(type: "int", maxLength: 100, nullable: false),
                     RegNumber = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: true)
                 },

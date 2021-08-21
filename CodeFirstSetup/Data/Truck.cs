@@ -10,8 +10,7 @@ namespace CodeFirstSetup.Data
     {
         public int Id { get; set; }
 
-        [MaxLength(50)]
-        public string Manufacturer { get; set; }
+        public string Manufacture { get; set; }
         
         [MaxLength(100)]
         public int LoadVolumeKvm { get; set; }
