@@ -1,0 +1,76 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<h1 class="align-content-center">Car</h1>
+<table class="table">
+    <thead>
+        <tr>            
+            <th scope="col">Manulfacture</th>
+            <th scope="col">Model</th>
+            <th scope="col">Year</th>
+            <th scope="col">HasRadio</th>
+            <th scope="col">Regnumber</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.car != null)
+        {
+            @foreach (var car in Model.car)
+            {
+                <tr>                   
+                    <td>@car.Manufacturer</td>
+                    <td>@car.Model</td>
+                    <td>@car.Year</td>
+                    @if (car.HasRadio == true)
+                    {
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
+                    <td>@car.RegNumber</td>
+                    <td>@car.Price</td>
+                </tr>
+            }
+
+        }
+        else
+        {
+            <h>Empty!</h>
+        }
+
+    </tbody>
+</table>
+<h1>Truck</h1>
+<table class="table">
+    <thead>
+        <tr>            
+            <th scope="col">Manulfacture</th>
+            <th scope="col">LoadVolumeKvm</th>
+            <th scope="col">Regnumber</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.truck != null)
+        {
+            @foreach (var truck in Model.truck)
+            {
+                <tr>                    
+                    <td>@truck.Manufacturer</td>
+                    <td>@truck.LoadVolumeKvm</td>
+                    <td>@truck.RegNumber</td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>
