@@ -12,5 +12,6 @@ namespace CodeFirstSetup.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<Car> car { get; set; }
         public DbSet<Truck> truck { get; set; }
+        public DbSet<Manufacturer> manufacturers { get; set; }
     }
 }

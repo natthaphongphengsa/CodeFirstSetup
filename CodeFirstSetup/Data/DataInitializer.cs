@@ -16,14 +16,21 @@ namespace CodeFirstSetup.Data
             dbContext.Database.Migrate();
             SeedCar(dbContext);
             SeedTruck(dbContext);
+            SeedManufacturers(dbContext);
+            SeedFixManufatures(dbContext);
+
         }
         public static void SeedCar(ApplicationDbContext dbContext)
-        {            
+        {
+            var Toyota = dbContext.manufacturers.First(t => t.name == "Toyota");
+            var Nissan = dbContext.manufacturers.First(t => t.name == "Nissan");
+            var Honda = dbContext.manufacturers.First(t => t.name == "Honda");
+
             if (!dbContext.car.Any(c => c.RegNumber == "ABT654"))
             {
                 dbContext.car.Add(new Car()
                 {
-                    Manufacturer = "Toyota",
+                    Manufacturer = Toyota,
                     Model = "Fortuner",
                     Year = 2019,
                     RegNumber = "ABT654",
@@ -35,7 +42,7 @@ namespace CodeFirstSetup.Data
             {
                 dbContext.car.Add(new Car()
                 {
-                    Manufacturer = "Honda",
+                    Manufacturer = Honda,
                     Model = "Civiq",
                     Year = 2020,
                     RegNumber = "ABG754",
@@ -47,7 +54,7 @@ namespace CodeFirstSetup.Data
             {
                 dbContext.car.Add(new Car()
                 {
-                    Manufacturer = "Nissan",
+                    Manufacturer = Nissan,
                     Model = "GT",
                     Year = 2018,
                     RegNumber = "CAD417",
@@ -58,11 +65,15 @@ namespace CodeFirstSetup.Data
         }
         public static void SeedTruck(ApplicationDbContext dbContext)
         {
+            var Scanidivia = dbContext.manufacturers.First(s => s.name == "Scanidivia");
+            var Renualt = dbContext.manufacturers.First(r => r.name == "Renualt");
+            var Volvo = dbContext.manufacturers.First(v => v.name == "Volvo");
+
             if (!dbContext.truck.Any(t => t.RegNumber == "BRD352"))
             {
                 dbContext.truck.Add(new Truck()
                 {
-                    Manufacture = "Scanidivia",
+                    Manufacture = Scanidivia,
                     LoadVolumeKvm = 60,
                     RegNumber = "BRD352",
                 });
@@ -71,7 +82,7 @@ namespace CodeFirstSetup.Data
             {
                 dbContext.truck.Add(new Truck()
                 {
-                    Manufacture = "Renualt",
+                    Manufacture = Renualt,
                     LoadVolumeKvm = 20,
                     RegNumber = "KDS372",
                 });
@@ -80,11 +91,77 @@ namespace CodeFirstSetup.Data
             {
                 dbContext.truck.Add(new Truck()
                 {
-                    Manufacture = "Volvo",
+                    Manufacture = Volvo,
                     LoadVolumeKvm = 20,
                     RegNumber = "SDA254",
                 });
             }
+            dbContext.SaveChanges();
+        }
+        public static void SeedManufacturers(ApplicationDbContext dbContext)
+        {
+            if (!dbContext.manufacturers.Any(m => m.name == "Volvo"))
+            {
+                dbContext.manufacturers.Add(new Manufacturer()
+                {
+                    name = "Volvo"
+                });
+            }
+            if (!dbContext.manufacturers.Any(m => m.name == "Scanidivia"))
+            {
+                dbContext.manufacturers.Add(new Manufacturer()
+                {
+                    name = "Scanidivia"
+                });
+            }
+            if (!dbContext.manufacturers.Any(m => m.name == "Renualt"))
+            {
+                dbContext.manufacturers.Add(new Manufacturer()
+                {
+                    name = "Renualt"
+                });
+            }
+            if (!dbContext.manufacturers.Any(m => m.name == "Toyota"))
+            {
+                dbContext.manufacturers.Add(new Manufacturer()
+                {
+                    name = "Toyota"
+                });
+            }
+            if (!dbContext.manufacturers.Any(m => m.name == "Honda"))
+            {
+                dbContext.manufacturers.Add(new Manufacturer()
+                {
+                    name = "Honda"
+                });
+            }
+            if (!dbContext.manufacturers.Any(m => m.name == "Nissan"))
+            {
+                dbContext.manufacturers.Add(new Manufacturer()
+                {
+                    name = "Nissan"
+                });
+            }
+            dbContext.SaveChanges();
+        }
+        public static void SeedFixManufatures(ApplicationDbContext dbContext)
+        {
+            var Toyota = dbContext.manufacturers.First(t => t.name == "Toyota");
+            var Honda = dbContext.manufacturers.First(h => h.name == "Honda");
+            var Nissan = dbContext.manufacturers.First(n => n.name == "Nissan");
+
+            dbContext.car.First(T => T.RegNumber == "ABT654").Manufacturer = Toyota;
+            dbContext.car.First(H => H.RegNumber == "ABG754").Manufacturer = Honda;
+            dbContext.car.First(N => N.RegNumber == "CAD417").Manufacturer = Nissan;
+
+            var Scanidivia = dbContext.manufacturers.First(t => t.name == "Scanidivia");
+            var Volvo = dbContext.manufacturers.First(t => t.name == "Volvo");
+            var Renualt = dbContext.manufacturers.First(t => t.name == "Renualt");
+
+            dbContext.truck.First(S => S.RegNumber == "BRD352").Manufacture = Scanidivia;
+            dbContext.truck.First(V => V.RegNumber == "SDA254").Manufacture = Volvo;
+            dbContext.truck.First(R => R.RegNumber == "KDS372").Manufacture = Renualt;
+
             dbContext.SaveChanges();
         }
     }
