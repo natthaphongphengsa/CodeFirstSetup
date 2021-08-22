@@ -1,0 +1,27 @@
+﻿@page
+@model CodeFirstSetup.Pages.RegisterModel
+@{
+}
+
+<form method="post">
+    <div class="form-group">        
+        <span asp-validation-for="Firstname" class="text-danger"></span>
+        <input asp-for="Firstname" class="form-control m-md-4" placeholder="Firstname" />
+
+        <span asp-validation-for="Lastname" class="text-danger"></span>
+        <input asp-for="Lastname" class="form-control m-md-4" placeholder="Lastname" />
+
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <input asp-for="Email" class="form-control m-md-4" placeholder="Email-Address" />
+
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <input asp-for="Password" class="form-control m-md-4" placeholder="Password" />
+        
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>        
+        <input asp-for="ConfirmPassword" class="form-control m-md-4" placeholder="Confirmpassword" />
+
+        <button type="submit" class="btn btn-light mt-4">Create account</button>
+    </div>
+</form>
+
+
