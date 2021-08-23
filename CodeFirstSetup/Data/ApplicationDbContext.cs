@@ -13,5 +13,7 @@ namespace CodeFirstSetup.Data
         public DbSet<Car> car { get; set; }
         public DbSet<Truck> truck { get; set; }
         public DbSet<Manufacturer> manufacturers { get; set; }
+        public DbSet<UserRegistration> users { get; set; }
+        public DbSet<Contries> contries { get; set; }
     }
 }

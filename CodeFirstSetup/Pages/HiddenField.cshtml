@@ -1,0 +1,15 @@
+﻿@page
+@model CodeFirstSetup.Pages.HiddenFieldModel
+@{
+}
+<div class="text-center">
+    <h1>Refresh page @Model.Count times </h1>
+</div>
+
+<form method="post">
+    <div class="text-center">
+        <input asp-for="Count" value="@Model.Count" />
+        <button type="submit" class="btn btn-primary">Refresh</button>
+    </div>
+</form>
+

@@ -4,7 +4,7 @@
 }
 
 <form method="post">
-    <div class="form-group">        
+    <div class="form-group">
         <span asp-validation-for="Firstname" class="text-danger"></span>
         <input asp-for="Firstname" class="form-control m-md-4" placeholder="Firstname" />
 
@@ -16,9 +16,18 @@
 
         <span asp-validation-for="Password" class="text-danger"></span>
         <input asp-for="Password" class="form-control m-md-4" placeholder="Password" />
-        
-        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>        
+
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         <input asp-for="ConfirmPassword" class="form-control m-md-4" placeholder="Confirmpassword" />
+
+        <span asp-validation-for="Contry" class="text-danger"></span>
+        <select asp-for="Contry" class="form-select form-control m-md-4" aria-label="Default select example" asp-items="@Model.contries">            
+        </select>
+
+        <span asp-validation-for="usertypes" class="text-danger"></span>
+        <select asp-for="Usertype" class="form-select form-control m-md-4" aria-label="Default select example" 
+                asp-items="@Model.usertypes">            
+        </select>
 
         <button type="submit" class="btn btn-light mt-4">Create account</button>
     </div>

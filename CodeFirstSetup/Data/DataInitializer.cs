@@ -18,6 +18,7 @@ namespace CodeFirstSetup.Data
             SeedTruck(dbContext);
             SeedManufacturers(dbContext);
             SeedFixManufatures(dbContext);
+            SeedContries(dbContext);
 
         }
         public static void SeedCar(ApplicationDbContext dbContext)
@@ -163,6 +164,26 @@ namespace CodeFirstSetup.Data
             dbContext.truck.First(R => R.RegNumber == "KDS372").Manufacture = Renualt;
 
             dbContext.SaveChanges();
+        }
+        public static void SeedContries(ApplicationDbContext dbContext)
+        {
+            List<Contries> contries = new List<Contries>();
+            contries.Add(new Contries() { Name = "Sweden" });
+            contries.Add(new Contries() { Name = "Norway" });
+            contries.Add(new Contries() { Name = "Denmark" });
+
+            foreach (Contries contry in contries)
+            {
+                if (!dbContext.contries.Any(c => c.Name == contry.Name))
+                {
+                    dbContext.contries.Add(new Contries()
+                    {
+                        Name = contry.Name
+                    });
+                }
+            }
+            dbContext.SaveChanges();
+
         }
     }
 }

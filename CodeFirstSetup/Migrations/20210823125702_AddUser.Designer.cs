@@ -4,14 +4,16 @@ using CodeFirstSetup.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodeFirstSetup.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210823125702_AddUser")]
+    partial class AddUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +53,7 @@ namespace CodeFirstSetup.Migrations
                     b.ToTable("car");
                 });
 
-            modelBuilder.Entity("CodeFirstSetup.Data.Contries", b =>
+            modelBuilder.Entity("CodeFirstSetup.Data.Contry", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +65,7 @@ namespace CodeFirstSetup.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("contries");
+                    b.ToTable("Contry");
                 });
 
             modelBuilder.Entity("CodeFirstSetup.Data.Manufacturer", b =>
@@ -161,7 +163,7 @@ namespace CodeFirstSetup.Migrations
 
             modelBuilder.Entity("CodeFirstSetup.Data.UserRegistration", b =>
                 {
-                    b.HasOne("CodeFirstSetup.Data.Contries", "Contry")
+                    b.HasOne("CodeFirstSetup.Data.Contry", "Contry")
                         .WithMany()
                         .HasForeignKey("ContryId");
 
