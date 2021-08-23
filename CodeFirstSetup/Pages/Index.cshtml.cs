@@ -15,6 +15,7 @@ namespace CodeFirstSetup.Pages
         public readonly ApplicationDbContext _dbContext;
         public List<Car> car { get; set; }
         public List<Truck> truck { get; set; }
+        public List<Manufacturer> manufacture { get; set; }
 
         public int Id { get; set; }
         public string Manufacturer { get; set; }
@@ -32,8 +33,9 @@ namespace CodeFirstSetup.Pages
 
         public void OnGet()
         {
-            //car = _dbContext.car.ToList();
-            //truck = _dbContext.truck.ToList();
+            manufacture = _dbContext.manufacturers.ToList();
+            car = _dbContext.car.ToList();
+            truck = _dbContext.truck.ToList();
         }
     }
 }

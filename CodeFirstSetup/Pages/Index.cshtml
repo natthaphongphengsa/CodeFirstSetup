@@ -11,9 +11,9 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 <h1 class="align-content-center">Car</h1>
-@*<table class="table">
+<table class="table">
     <thead>
-        <tr>            
+        <tr>
             <th scope="col">Manulfacture</th>
             <th scope="col">Model</th>
             <th scope="col">Year</th>
@@ -27,8 +27,8 @@
         {
             @foreach (var car in Model.car)
             {
-                <tr>                   
-                    <td>@car.Manufacturer</td>
+                <tr>
+                    <td>@car.Manufacturer.name</td>
                     <td>@car.Model</td>
                     <td>@car.Year</td>
                     @if (car.HasRadio == true)
@@ -55,7 +55,7 @@
 <h1>Truck</h1>
 <table class="table">
     <thead>
-        <tr>            
+        <tr>
             <th scope="col">Manulfacture</th>
             <th scope="col">LoadVolumeKvm</th>
             <th scope="col">Regnumber</th>
@@ -66,8 +66,8 @@
         {
             @foreach (var truck in Model.truck)
             {
-                <tr>                    
-                    <td>@truck.Manufacturer</td>
+                <tr>
+                    <td>@truck.Manufacture.name</td>
                     <td>@truck.LoadVolumeKvm</td>
                     <td>@truck.RegNumber</td>
                 </tr>
@@ -75,4 +75,4 @@
 
         }
     </tbody>
-</table>*@
+</table>
