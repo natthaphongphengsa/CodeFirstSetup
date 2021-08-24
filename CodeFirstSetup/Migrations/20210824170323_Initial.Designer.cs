@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodeFirstSetup.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210823132006_Initial5")]
-    partial class Initial5
+    [Migration("20210824170323_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,66 @@ namespace CodeFirstSetup.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CVEducation", b =>
+                {
+                    b.Property<int>("EducationsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("cvsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EducationsId", "cvsId");
+
+                    b.HasIndex("cvsId");
+
+                    b.ToTable("CVEducation");
+                });
+
+            modelBuilder.Entity("CodeFirstSetup.Data.CV", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("DriverLicence")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HaveCar")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Mobile")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("WorkLocaltion")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ZipCode")
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("cv");
+                });
 
             modelBuilder.Entity("CodeFirstSetup.Data.Car", b =>
                 {
@@ -66,6 +126,21 @@ namespace CodeFirstSetup.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("contries");
+                });
+
+            modelBuilder.Entity("CodeFirstSetup.Data.Education", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Namn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("educations");
                 });
 
             modelBuilder.Entity("CodeFirstSetup.Data.Manufacturer", b =>
@@ -141,6 +216,21 @@ namespace CodeFirstSetup.Migrations
                     b.HasIndex("ContryId");
 
                     b.ToTable("users");
+                });
+
+            modelBuilder.Entity("CVEducation", b =>
+                {
+                    b.HasOne("CodeFirstSetup.Data.Education", null)
+                        .WithMany()
+                        .HasForeignKey("EducationsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CodeFirstSetup.Data.CV", null)
+                        .WithMany()
+                        .HasForeignKey("cvsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CodeFirstSetup.Data.Car", b =>

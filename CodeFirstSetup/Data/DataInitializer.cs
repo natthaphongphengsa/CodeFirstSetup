@@ -19,8 +19,30 @@ namespace CodeFirstSetup.Data
             SeedManufacturers(dbContext);
             SeedFixManufatures(dbContext);
             SeedContries(dbContext);
+            SeedEducations(dbContext);
 
         }
+
+        private static void SeedEducations(ApplicationDbContext dbContext)
+        {
+            List<Education> educations = new List<Education>();
+            educations.Add(new Education() { Namn = "Yrkehögskolan Utbildning"});
+            educations.Add(new Education() { Namn = "Gymnasial Utbildning" });
+            educations.Add(new Education() { Namn = "Högskolan Utbildning" });
+
+            foreach (Education education in educations)
+            {
+                if (!dbContext.educations.Any(e => e.Namn == education.Namn))
+                {
+                    dbContext.educations.Add(new Education()
+                    {
+                        Namn = education.Namn
+                    });
+                }
+            }
+            dbContext.SaveChanges();
+        }
+
         public static void SeedCar(ApplicationDbContext dbContext)
         {
             var Toyota = dbContext.manufacturers.First(t => t.name == "Toyota");

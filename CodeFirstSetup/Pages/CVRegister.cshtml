@@ -1,0 +1,99 @@
+﻿@page
+@model CodeFirstSetup.Pages.CVRegisterModel
+@{
+}
+
+<div class="card">
+    <div class="card-header">
+        <h1 class="text-uppercase">CV Uppgifter</h1>
+    </div>
+    <form method="post">
+        <div class="row p-3">
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Name">Namn</label>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <input asp-for="Name" class="form-control" />
+
+                    <label asp-for="Address">Adress</label>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                    <input asp-for="Address" class="form-control" />
+
+                    <label asp-for="City">Postort</label>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                    <input asp-for="City" class="form-control" />
+
+                    <label asp-for="SelectedEducationId">Utbildning</label>
+                    <span asp-validation-for="SelectedEducationId" class="text-danger"></span>
+                    <select asp-for="SelectedEducationId" asp-items="@Model.Educations" multiple="multiple" class="form-control"></select>
+                </div>
+
+                <label>Bil</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" asp-for="@Model.DriverLicence" id="flexCheckIndeterminate">
+                    <label class="form-check-label" for="flexCheckIndeterminate">
+                        Jag har körkort
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" asp-for="@Model.HaveCar" id="flexCheckIndeterminate">
+                    <label class="form-check-label" for="flexCheckIndeterminate">
+                        Jag har tillgång till bil
+                    </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label asp-for="Mobile">Mobil</label>
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                    <input asp-for="Mobile" class="form-control" />
+
+                    <label asp-for="ZipCode">Postnummer</label>
+                    <span asp-validation-for="ZipCode" class="text-danger"></span>
+                    <input asp-for="ZipCode" class="form-control" />
+
+                    <label asp-for="Email">Email-adress</label>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <input asp-for="Email" class="form-control" />
+                </div>
+                <label asp-for="SelectedWorkLocation">Har möjligthet att jobba</label>
+                <span asp-validation-for="SelectedWorkLocation" class="text-danger"></span>
+                @foreach (var choice in Model.WorkLocations)
+                {
+                    switch (choice)
+                    {
+                        case "Sverige":
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="SelectedWorkLocation" value="@choice">
+                                <label class="form-check-label">
+                                    Kan arbeta inom @choice
+                                </label>
+                            </div>
+                            break;
+                        case "EU":
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="SelectedWorkLocation" value="@choice">
+                                <label class="form-check-label">
+                                    Kan arbetar inom @choice
+                                </label>
+                            </div>
+                            break;
+                        case "Regional":
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="SelectedWorkLocation" value="@choice">
+                                <label class="form-check-label">
+                                    Endast arbeta @choice
+                                </label>
+                            </div>
+                            break;
+                    }
+                }
+            </div>
+        </div>
+        <div class="text-right p-3">
+            <button type="submit" class="btn btn-light mt-4">Save</button>
+            <a type="button" asp-page="/Index" class="btn btn-light mt-4">Cancel</a>
+        </div>
+    </form>
+</div>
