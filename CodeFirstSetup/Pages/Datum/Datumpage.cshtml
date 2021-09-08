@@ -1,0 +1,27 @@
+﻿@page
+@model CodeFirstSetup.Pages.Datum.DatumpageModel
+@{
+}
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Date">Datum</label>
+        <span asp-validation-for="Date" class="text-danger"></span>
+        <input asp-for="Date" class="form-control" />
+
+        <label asp-for="Month">Månad</label>
+        <span asp-validation-for="Month" class="text-danger"></span>
+        <input asp-for="Month" class="form-control" />
+
+        <label asp-for="Year">År</label>
+        <span asp-validation-for="Year" class="text-danger"></span>
+        <input asp-for="Year" class="form-control" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-light mt-4">Save</button>
+        <a type="button" asp-page="/Index" class="btn btn-light mt-4">Cancel</a>
+    </div>
+</form>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

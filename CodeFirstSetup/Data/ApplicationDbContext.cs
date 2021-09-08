@@ -17,5 +17,6 @@ namespace CodeFirstSetup.Data
         public DbSet<Contries> contries { get; set; }
         public DbSet<CV> cv { get; set; }
         public DbSet<Education> educations { get; set; }
+        public DbSet<Kurs> kurs { get; set; }
     }
 }

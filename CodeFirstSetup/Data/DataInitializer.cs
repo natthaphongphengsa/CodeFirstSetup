@@ -20,13 +20,28 @@ namespace CodeFirstSetup.Data
             SeedFixManufatures(dbContext);
             SeedContries(dbContext);
             SeedEducations(dbContext);
-
+            SeedKurs(dbContext);
         }
-
-        private static void SeedEducations(ApplicationDbContext dbContext)
+        public static void SeedKurs(ApplicationDbContext dbContext)
+        {
+            if (!dbContext.kurs.Any(c => c.Name == "Webbapplikationer och mobil utveckling"))
+            {
+                dbContext.kurs.Add(new Kurs()
+                {
+                    Name = "Webbapplikationer och mobil utveckling",
+                    Description = "På denna kurs kommer ni få kunskapen för att bygga webbapplikationer.  Webbapplikationer innebär en viss arkitektur (händelsebaserad programmering)  och struktur (MVC, var och hur olika filer - css:er, html, js etc - används )",
+                    Startday = new DateTime().AddDays(12).AddMonths(9).AddYears(2021),
+                    LectureDay = DayOfWeek.Wednesday,
+                    Created = DateTime.Now,
+                    LastModeified = DateTime.Now
+                });
+            }
+            dbContext.SaveChanges();
+        }
+        public static void SeedEducations(ApplicationDbContext dbContext)
         {
             List<Education> educations = new List<Education>();
-            educations.Add(new Education() { Namn = "Yrkehögskolan Utbildning"});
+            educations.Add(new Education() { Namn = "Yrkehögskolan Utbildning" });
             educations.Add(new Education() { Namn = "Gymnasial Utbildning" });
             educations.Add(new Education() { Namn = "Högskolan Utbildning" });
 
@@ -42,7 +57,6 @@ namespace CodeFirstSetup.Data
             }
             dbContext.SaveChanges();
         }
-
         public static void SeedCar(ApplicationDbContext dbContext)
         {
             var Toyota = dbContext.manufacturers.First(t => t.name == "Toyota");

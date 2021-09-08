@@ -1,0 +1,27 @@
+﻿@page
+@model CodeFirstSetup.Pages.kurs.KursListModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Kurs</th>
+            <th scope="col">Description</th>
+            <th scope="col">Start</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kurser in Model.kurs)
+        {
+            <tr>
+                <td>@kurser.Name</td>
+                <td>@kurser.Description</td>
+                <td>@kurser.Startday.Year-@kurser.Startday.Month-@kurser.Startday.Day</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@kurser.Id" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
