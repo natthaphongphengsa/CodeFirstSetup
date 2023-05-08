@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 using CodeFirstSetup.Data;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace CodeFirstSetup.Pages
 {
@@ -63,7 +60,7 @@ namespace CodeFirstSetup.Pages
         public IActionResult OnPost()
         {
             OnGet();
-            if (ModelState.IsValid )
+            if (ModelState.IsValid)
             {
                 var cv = new CV();
                 cv.Name = Name;

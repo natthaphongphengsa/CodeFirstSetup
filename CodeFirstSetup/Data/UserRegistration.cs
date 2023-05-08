@@ -1,14 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace CodeFirstSetup.Data
-{    
+﻿namespace CodeFirstSetup.Data
+{
     public class UserRegistration
-    {        
+    {
         public int Id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }

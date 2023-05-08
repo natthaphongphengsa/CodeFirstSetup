@@ -1,15 +1,10 @@
 using CodeFirstSetup.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CodeFirstSetup
 {
@@ -27,7 +22,7 @@ namespace CodeFirstSetup
         {
 
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer("Server = localhost; Database = Cars; Trusted_Connection = True;"));
+                options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddRazorPages();
         }

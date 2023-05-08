@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeFirstSetup.Data
 {
@@ -14,9 +10,9 @@ namespace CodeFirstSetup.Data
         public static void SeedData(ApplicationDbContext dbContext)
         {
             dbContext.Database.Migrate();
+            SeedManufacturers(dbContext);
             SeedCar(dbContext);
             SeedTruck(dbContext);
-            SeedManufacturers(dbContext);
             SeedFixManufatures(dbContext);
             SeedContries(dbContext);
             SeedEducations(dbContext);
@@ -59,9 +55,9 @@ namespace CodeFirstSetup.Data
         }
         public static void SeedCar(ApplicationDbContext dbContext)
         {
-            var Toyota = dbContext.manufacturers.First(t => t.name == "Toyota");
-            var Nissan = dbContext.manufacturers.First(t => t.name == "Nissan");
-            var Honda = dbContext.manufacturers.First(t => t.name == "Honda");
+            var Toyota = dbContext.manufacturers.FirstOrDefault(t => t.name == "Toyota");
+            var Nissan = dbContext.manufacturers.FirstOrDefault(t => t.name == "Nissan");
+            var Honda = dbContext.manufacturers.FirstOrDefault(t => t.name == "Honda");
 
             if (!dbContext.car.Any(c => c.RegNumber == "ABT654"))
             {

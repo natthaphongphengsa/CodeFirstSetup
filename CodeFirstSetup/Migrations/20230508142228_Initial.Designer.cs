@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CodeFirstSetup.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210824170323_Initial")]
+    [Migration("20230508142228_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -141,6 +141,37 @@ namespace CodeFirstSetup.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("educations");
+                });
+
+            modelBuilder.Entity("CodeFirstSetup.Data.Kurs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)");
+
+                    b.Property<DateTime>("LastModeified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LectureDay")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Startday")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("kurs");
                 });
 
             modelBuilder.Entity("CodeFirstSetup.Data.Manufacturer", b =>

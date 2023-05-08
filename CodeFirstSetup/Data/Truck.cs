@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CodeFirstSetup.Data
 {
@@ -11,7 +7,7 @@ namespace CodeFirstSetup.Data
         public int Id { get; set; }
 
         public Manufacturer Manufacture { get; set; }
-        
+
         [MaxLength(100)]
         public int LoadVolumeKvm { get; set; }
 
